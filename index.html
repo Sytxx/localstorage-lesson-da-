@@ -1,0 +1,138 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INI LAGI BELAJAR NGODING</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #root {
+            background-color: aqua;
+            height: 100vh;
+            text-align: center;
+        }
+
+        #prot {
+            padding: 48vh;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- CONTENT -->
+    <div id="root">
+
+        <div id="prot">
+            <input type="text" placeholder="masukin username" id="username1">
+            <input type="password" placeholder="masukin password" id="password1">
+            <button id="btn11" onclick="jikaMasuk()">MASUK</button>
+            <button id="btn12" onclick="jikaRegis()">REGISTER</button>
+            <button id="logout" onCLick="jikaKeluar()">LOGOUT</button>
+            <button id="btn13" onCLick="jikaGo()">GO!</button>
+            <button id="btn14" onCLick="jikaClear()">CLEAR</button>
+            <br>
+            <br>
+            <h1 id="akukeren">AKU KEREN BANGET ADMIN FATUR</h1>
+            <h1 id="akugakkeren">AKU GAK KEREN FATUR</h1>
+            <input type="text" placeholder="regis username" id="regusername">
+            <input type="password" placeholder="regis password" id="regpassword">
+
+        </div>
+    </div>
+    <script type="application/javascript">
+
+        let inputUsername = document.getElementById('username1');
+        let inputPassword = document.getElementById('password1');
+        let akuk = document.getElementById('akukeren');
+        let akug = document.getElementById('akugakkeren');
+        let button = document.getElementById('btn11');
+        let buttonlogout = document.getElementById('logout');
+        let buttonregis = document.getElementById('btn12');
+        let regusername = document.getElementById('regusername');
+        let regpassword = document.getElementById('regpassword');
+        let gosss = document.getElementById('btn13');
+        let storageUsername = localStorage.getItem('Username')
+        let storagePassword = localStorage.getItem('Password')
+        let storageSession = sessionStorage.getItem('Username')
+        let clear = document.getElementById('btn14')
+
+        akuk.style.display = "none";
+        akug.style.display = "none";
+        buttonlogout.style.display = "none";
+        regusername.style.display = "none";
+        regpassword.style.display = "none";
+        gosss.style.display = "none";
+
+        function jikaClear() {
+            localStorage.clear();   
+            sessionStorage.clear();   
+        }
+
+        function jikaRegis() {
+            inputUsername.style.display = "none"
+            button.style.display = "none"
+            buttonregis.style.display = "none"
+            inputPassword.style.display = "none"
+            regusername.style.display = "block";
+            regpassword.style.display = "block";
+            gosss.style.display = "block";
+            
+        }
+
+
+        function jikaGo() {
+            localStorage.setItem("Username", regusername.value)
+            localStorage.setItem("Password", regpassword.value)
+            // console.log('maling')
+        }
+
+        function jikaKeluar() {
+            localStorage.clear();
+            location.reload();
+
+        }
+
+        function jikaMasuk() {
+            if((inputUsername.value) === storageUsername && (inputPassword.value) === storagePassword) {
+                alert('udah berhasil')
+                sessionStorage.setItem("Username", inputUsername.value)
+                sessionStorage.setItem("Password", inputPassword.value)
+            } else {
+                alert('gagal dilakukan')
+            }
+            // console.log('faturs')
+            // console.log(inputUsername.value, storageUsername)
+            // console.log("Nama Username:", storageUsername)
+            // console.log("Password:", storagePassword)
+                // if()
+                //  alert('user not found')
+            }
+            // console.log(inputPassword.value)
+            // if (inputUsername.value == "fatur" && inputPassword.value == "fatur123") {
+                // sessionStorage.setItem("Role", "Admin")
+
+            // } else {
+                // sessionStorage.setItem("Role", "Anjing")
+            // }
+        // }
+
+        if (localStorage.getItem('Username')) {
+            button.style.display = "none"
+            inputUsername.style.display = "none"
+            inputPassword.style.display = "none"
+            buttonlogout.style.display = "block"
+            // if (localStorage.getItem("Role") == "Admin") {
+            //     akuk.style.display = "block"
+            // } else {
+            //     akug.style.display = "block"
+            }
+
+        // }
+    </script>
+</body>
+
+</html>
