@@ -14,11 +14,26 @@
             background-color: aqua;
             height: 100vh;
             text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center ;
         }
 
-        #prot {
-            padding: 48vh;
+        /* #prot {
+            padding: 47vh;
+        } */
+
+        #logoutbutton {
+            text-align: center;
+            background-color: black;
         }
+
+        /* #btn123 {
+            display: flex;
+            background-color: black;
+        } */
+
+
     </style>
 </head>
 
@@ -27,16 +42,18 @@
     <div id="root">
 
         <div id="prot">
-            <input type="text" placeholder="masukin username" id="username1">
-            <input type="password" placeholder="masukin password" id="password1">
-            <button id="btn11" onclick="jikaMasuk()">MASUK</button>
-            <button id="btn12" onclick="jikaRegis()">REGISTER</button>
-            <button id="logout" onCLick="jikaKeluar()">LOGOUT</button>
-            <button id="btn13" onCLick="jikaGo()">GO!</button>
-            <button id="btn14" onCLick="jikaClear()">CLEAR</button>
+            <div id="button111">
+                <input type="text" placeholder="masukin username" id="username1">
+                <input type="password" placeholder="masukin password" id="password1">
+                <button id="btn11" onclick="jikaMasuk()">MASUK</button>
+                <button id="btn12" onclick="jikaRegis()">REGISTER</button>
+                <button id="logout" onCLick="jikaKeluar()">LOGOUT</button>
+                <button id="btn13" onCLick="jikaGo()">GO!</button>
+                <button id="btn14" onCLick="jikaClear()">CLEAR</button>
+            </div>
             <br>
             <br>
-            <h1 id="akukeren">berhasil</h1>
+            <h1 id="akukeren">selamat datang</h1>
             <h1 id="akugakkeren">tidak berhasil</h1>
             <input type="text" placeholder="regis username" id="regusername">
             <input type="password" placeholder="regis password" id="regpassword">
@@ -67,6 +84,10 @@
         regpassword.style.display = "none";
         gosss.style.display = "none";
         clear.style.display = "none";
+        if(localStorage.getItem('Username')) {
+            buttonregis.style.display = "none"
+        }
+
 
 
         function jikaLogout() {
@@ -137,8 +158,10 @@
             inputPassword.style.display = "none"
             buttonlogout.style.display = "block"
             buttonregis.style.display = "none"
-            clear.style.display = "none";
-            akuk.style.display = "block";            
+            clear.style.display = "none"
+            // akuk.style.display = "block",     
+            akuk.style.display = "block"
+            document.getElementById("akukeren").innerText = "Selamat datang, " + sessionStorage.getItem('Username')
 
             // if (localStorage.getItem("Role") == "Admin") {
             //     akuk.style.display = "block"
