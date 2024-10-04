@@ -129,12 +129,12 @@
 
         function jikaMasuk() {
             if((inputUsername.value) === storageUsername && (inputPassword.value) === storagePassword) {
-                alert('udah berhasil')
+                alert('Login berhasil')
                 sessionStorage.setItem("Username", inputUsername.value)
                 sessionStorage.setItem("Password", inputPassword.value)
                 location.reload();
             } else {
-                alert('gagal dilakukan')
+                alert('Silahkan masukan username & password')
                 location.reload();
             }
             // console.log('faturs')
