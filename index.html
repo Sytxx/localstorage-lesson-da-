@@ -36,8 +36,8 @@
             <button id="btn14" onCLick="jikaClear()">CLEAR</button>
             <br>
             <br>
-            <h1 id="akukeren"> ADMIN FATUR</h1>
-            <h1 id="akugakkeren">a FATUR</h1>
+            <h1 id="akukeren">berhasil</h1>
+            <h1 id="akugakkeren">tidak berhasil</h1>
             <input type="text" placeholder="regis username" id="regusername">
             <input type="password" placeholder="regis password" id="regpassword">
 
@@ -66,6 +66,13 @@
         regusername.style.display = "none";
         regpassword.style.display = "none";
         gosss.style.display = "none";
+        clear.style.display = "none";
+
+
+        function jikaLogout() {
+            localStorage.clear();
+            sessionStorage.clear();
+        }
 
         function jikaClear() {
             localStorage.clear();   
@@ -87,10 +94,12 @@
         function jikaGo() {
             localStorage.setItem("Username", regusername.value)
             localStorage.setItem("Password", regpassword.value)
+            location.reload();
             // console.log('maling')
         }
 
         function jikaKeluar() {
+            sessionStorage.clear();
             localStorage.clear();
             location.reload();
 
@@ -101,8 +110,10 @@
                 alert('udah berhasil')
                 sessionStorage.setItem("Username", inputUsername.value)
                 sessionStorage.setItem("Password", inputPassword.value)
+                location.reload();
             } else {
                 alert('gagal dilakukan')
+                location.reload();
             }
             // console.log('faturs')
             // console.log(inputUsername.value, storageUsername)
@@ -120,11 +131,15 @@
             // }
         // }
 
-        if (localStorage.getItem('Username')) {
+        if (sessionStorage.getItem('Username')) {
             button.style.display = "none"
             inputUsername.style.display = "none"
             inputPassword.style.display = "none"
             buttonlogout.style.display = "block"
+            buttonregis.style.display = "none"
+            clear.style.display = "none";
+            akuk.style.display = "block";            
+
             // if (localStorage.getItem("Role") == "Admin") {
             //     akuk.style.display = "block"
             // } else {
